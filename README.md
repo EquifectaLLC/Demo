@@ -1,7 +1,7 @@
 # Demo
 Demo
 
-Install flutter...
+Install flutter (use VSCode or Intellij Community for IDE) ...
 
 https://flutter.io/get-started/install/
 
