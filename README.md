@@ -4,6 +4,7 @@ Demo
 Currently using fluttter relase branch...
 
 `cd app`
+
 `flutter channel master`
 
 Make sure this checks out clean...
