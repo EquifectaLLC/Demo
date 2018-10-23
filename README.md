@@ -1,6 +1,10 @@
 # Demo
 Demo
 
+Install flutter...
+
+https://flutter.io/get-started/install/
+
 Currently using fluttter relase branch...
 
 `cd app`
