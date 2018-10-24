@@ -1,42 +1,77 @@
 import 'package:flutter/material.dart';
+import 'package:scoped_model/scoped_model.dart';
+import 'package:custom_splash_screen/custom_splash_screen.dart';
+
+const keenelandGreen = Color(0xFF115740);
 
 void main() => runApp(MobileApp());
-const keenlandGreen = Color(0xFF115740);
 
 class MobileApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Keenland',
+      title: 'Keeneland',
       theme: ThemeData(
-          // This is the theme of your application.
-          //
-          // Try running your application with "flutter run". You'll see the
-          // application has a blue toolbar. Then, without quitting the app, try
-          // changing the primarySwatch below to Colors.green and then invoke
-          // "hot reload" (press "r" in the console where you ran "flutter run",
-          // or press Run > Flutter Hot Reload in IntelliJ). Notice that the
-          // counter didn't reset back to zero; the application is not restarted.
-          primarySwatch: MaterialColor(keenlandGreen.value, const {
-            50: keenlandGreen,
-            100: keenlandGreen,
-            200: keenlandGreen,
-            300: keenlandGreen,
-            400: keenlandGreen,
-            500: keenlandGreen,
-            600: keenlandGreen,
-            700: keenlandGreen,
-            800: keenlandGreen,
-            900: keenlandGreen,
-          }),
+        splashColor: keenelandGreen,
+        accentColor: Colors.white,
+        primaryColor: keenelandGreen,
+        canvasColor: keenelandGreen,
+        brightness: Brightness.dark,
 
-          // 0x[alpha][hex]
-          // 0x  FF  000000
-          accentColor: keenlandGreen,
-          backgroundColor: keenlandGreen),
-      home: HomePage(),
+        // This is the theme of your application.
+        //
+        // Try running your application with "flutter run". You'll see the
+        // application has a blue toolbar. Then, without quitting the app, try
+        // changing the primarySwatch below to Colors.green and then invoke
+        // "hot reload" (press "r" in the console where you ran "flutter run",
+        // or press Run > Flutter Hot Reload in IntelliJ). Notice that the
+        // counter didn't reset back to zero; the application is not restarted.
+        // primarySwatch: MaterialColor(keenelandGreen.value, const {
+        //   50: keenelandGreen,
+        //   100: keenelandGreen,
+        //   200: keenelandGreen,
+        //   300: keenelandGreen,
+        //   400: keenelandGreen,
+        //   500: keenelandGreen,
+        //   600: keenelandGreen,
+        //   700: keenelandGreen,
+        //   800: keenelandGreen,
+        //   900: keenelandGreen,
+        // }),
+      ),
+      debugShowCheckedModeBanner: false,
+      home: CustomSplashScreen(
+        backgroundColor: keenelandGreen,
+        loadingSplash: SplashPage(),
+        errorSplash: ErrorPage(),
+        seconds: 3,
+        navigateAfterSeconds: HomePage(),
+      ),
     );
+  }
+}
+
+class ErrorPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text(
+        "ERROR",
+        style: TextStyle(fontSize: 25.0, color: Colors.red),
+      ),
+    );
+  }
+}
+
+class SplashPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+        child: Image.asset(
+      'graphics/logo-branded-tall.png',
+      scale: 1.75,
+    ));
   }
 }
 
@@ -44,38 +79,25 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      backgroundColor: keenlandGreen,
+      backgroundColor: keenelandGreen,
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text('Keenland'),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug paint" (press "p" in the console where you ran
-          // "flutter run", or select "Toggle Debug Paint" from the Flutter tool
-          // window in IntelliJ) to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[],
+          // title: Text('Keenland'),
+          title:
+              Image.asset('graphics/logo-branded-wide.png', fit: BoxFit.cover)),
+      body: new Container(
+        decoration: new BoxDecoration(
+          image: new DecorationImage(
+            image: new AssetImage('graphics/background-small.png'),
+            fit: BoxFit.cover,
+          ),
         ),
+        child: null /* add child content content here */,
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: _incrementCounter,
-      //   tooltip: 'Increment',
-      //   child: Icon(Icons.add),
-      // ), // This trailing comma makes auto-formatting nicer for build methods.
+      bottomNavigationBar: BottomNavigationBar(items: <BottomNavigationBarItem>[
+        BottomNavigationBarItem(title: Text('Home'), icon: Icon(Icons.home)),
+        BottomNavigationBarItem(
+            title: Text('Book'), icon: Icon(Icons.library_books))
+      ]),
     );
   }
 }

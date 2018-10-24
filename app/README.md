@@ -1,6 +1,6 @@
 # app
 
-Demo app
+Equifecta Demo
 
 ## Getting Started
 

@@ -5,11 +5,11 @@ Install flutter (use VSCode or Intellij Community for IDE) ...
 
 https://flutter.io/get-started/install/
 
-Currently using fluttter relase branch...
+Currently using fluttter beta branch...
 
 `cd app`
 
-`flutter channel master`
+`flutter channel beta
 
 Make sure this checks out clean...
 

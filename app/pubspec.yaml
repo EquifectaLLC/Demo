@@ -1,5 +1,5 @@
 name: app
-description: Demo app
+description: Equifecta Demo
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -19,6 +19,9 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
+
+  scoped_model:
+  custom_splash_screen:
 
 dev_dependencies:
   flutter_test:
@@ -42,7 +45,12 @@ flutter:
   #  - images/a_dot_ham.jpeg
 
   assets:
-    - graphics/splash.png
+   - graphics/splash.png
+   - graphics/logo.png
+   - graphics/logo-branded-tall.png
+   - graphics/logo-branded-wide.png
+   - graphics/background.png
+   - graphics/background-small.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
