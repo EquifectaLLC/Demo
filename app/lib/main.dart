@@ -22,6 +22,7 @@ class MobileApp extends StatelessWidget {
             canvasColor: keenelandGreen,
             brightness: Brightness.dark,
             backgroundColor: keenelandGreen,
+            scaffoldBackgroundColor: Colors.grey.shade900,
           ),
           debugShowCheckedModeBanner: false,
           home: CustomSplashScreen(
@@ -97,10 +98,21 @@ class HomePage extends ScopedModelDescendant<AppModel> {
                       );
                     },
                     itemCount: 10,
-                    itemWidth: 350.0,
-                    itemHeight: 500.0,
+                    itemWidth: double.infinity,
+                    itemHeight: double.infinity,
                     layout: SwiperLayout.TINDER,
-                  )
+                  ),
+                  new Swiper(
+                    itemBuilder: (BuildContext context, int index) {
+                      return new Image.network(
+                        "https://loremflickr.com/350/500/horse,racing/all?random=${index})",
+                        fit: BoxFit.fill,
+                      );
+                    },
+                    itemCount: 10,
+                    pagination: new SwiperPagination(),
+                    control: new SwiperControl(),
+                  ),
                 ][model.selectedPageIndex]),
             bottomNavigationBar: BottomNavigationBar(
               currentIndex: model.selectedPageIndex,
@@ -109,7 +121,9 @@ class HomePage extends ScopedModelDescendant<AppModel> {
                 BottomNavigationBarItem(
                     title: Text('Home'), icon: Icon(Icons.home)),
                 BottomNavigationBarItem(
-                    title: Text('Book'), icon: Icon(Icons.library_books))
+                    title: Text('Book'), icon: Icon(Icons.library_books)),
+                BottomNavigationBarItem(
+                    title: Text('Help'), icon: Icon(Icons.help))
               ],
             ),
           );
