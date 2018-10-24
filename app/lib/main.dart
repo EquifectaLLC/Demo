@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:custom_splash_screen/custom_splash_screen.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 
 const keenelandGreen = Color(0xFF115740);
 
@@ -18,27 +19,7 @@ class MobileApp extends StatelessWidget {
         primaryColor: keenelandGreen,
         canvasColor: keenelandGreen,
         brightness: Brightness.dark,
-
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or press Run > Flutter Hot Reload in IntelliJ). Notice that the
-        // counter didn't reset back to zero; the application is not restarted.
-        // primarySwatch: MaterialColor(keenelandGreen.value, const {
-        //   50: keenelandGreen,
-        //   100: keenelandGreen,
-        //   200: keenelandGreen,
-        //   300: keenelandGreen,
-        //   400: keenelandGreen,
-        //   500: keenelandGreen,
-        //   600: keenelandGreen,
-        //   700: keenelandGreen,
-        //   800: keenelandGreen,
-        //   900: keenelandGreen,
-        // }),
+        backgroundColor: keenelandGreen,
       ),
       debugShowCheckedModeBanner: false,
       home: CustomSplashScreen(
@@ -85,14 +66,24 @@ class HomePage extends StatelessWidget {
           title:
               Image.asset('graphics/logo-branded-wide.png', fit: BoxFit.cover)),
       body: new Container(
-        decoration: new BoxDecoration(
-          image: new DecorationImage(
-            image: new AssetImage('graphics/background-small.png'),
-            fit: BoxFit.cover,
+          decoration: new BoxDecoration(
+            image: new DecorationImage(
+              image: new AssetImage('graphics/background-small.png'),
+              fit: BoxFit.cover,
+            ),
           ),
-        ),
-        child: null /* add child content content here */,
-      ),
+          child: new Swiper(
+            itemBuilder: (BuildContext context, int index) {
+              return new Image.network(
+                "https://loremflickr.com/350/500/horse,racing/all?random=${index})",
+                fit: BoxFit.fill,
+              );
+            },
+            itemCount: 10,
+            itemWidth: 350.0,
+            itemHeight: 500.0,
+            layout: SwiperLayout.TINDER,
+          )),
       bottomNavigationBar: BottomNavigationBar(items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(title: Text('Home'), icon: Icon(Icons.home)),
         BottomNavigationBarItem(
