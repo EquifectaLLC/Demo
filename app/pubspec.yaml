@@ -50,6 +50,7 @@ flutter:
    - graphics/logo.png
    - graphics/logo-branded-tall.png
    - graphics/logo-branded-wide.png
+   - graphics/logo-equifecta.png
    - graphics/background.png
    - graphics/background-small.png
 

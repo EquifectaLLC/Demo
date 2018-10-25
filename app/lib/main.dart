@@ -62,16 +62,31 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-        child: Image.asset(
-      'graphics/logo-branded-tall.png',
-      scale: 1.75,
-    ));
+        child: Column(children: <Widget>[
+      Spacer(),
+      Image.asset(
+        'graphics/logo-branded-tall.png',
+        scale: 1.75,
+      ),
+      Text('SALES',
+          style: TextStyle(
+              fontWeight: FontWeight.w100,
+              fontFamily: 'Times New Roman',
+              color: Colors.white.withOpacity(.85),
+              fontSize: 24.0)),
+      Spacer(),
+      Text('powered by',
+          style: TextStyle(color: Colors.white.withOpacity(.85))),
+      Image.asset(
+        'graphics/logo-equifecta.png',
+        scale: 2.5,
+      ),
+    ]));
   }
 }
 
 class HomePage extends ScopedModelDescendant<AppModel> {
   @override
-  // TODO: implement builder
   ScopedModelDescendantBuilder<AppModel> get builder =>
       (context, child, model) => Scaffold(
             backgroundColor: keenelandGreen,
@@ -93,7 +108,7 @@ class HomePage extends ScopedModelDescendant<AppModel> {
                   Swiper(
                     itemBuilder: (BuildContext context, int index) {
                       return new Image.network(
-                        "https://loremflickr.com/350/500/horse,racing/all?random=${index})",
+                        "https://loremflickr.com/350/500/keeneland/all?random=${index})",
                         fit: BoxFit.fill,
                       );
                     },
@@ -105,14 +120,15 @@ class HomePage extends ScopedModelDescendant<AppModel> {
                   new Swiper(
                     itemBuilder: (BuildContext context, int index) {
                       return new Image.network(
-                        "https://loremflickr.com/350/500/horse,racing/all?random=${index})",
+                        "https://loremflickr.com/350/500/keeneland/all?random=${index})",
                         fit: BoxFit.fill,
                       );
                     },
                     itemCount: 10,
                     pagination: new SwiperPagination(),
-                    control: new SwiperControl(),
+                    control: new SwiperControl(color: Colors.white),
                   ),
+                  Container(color: keenelandGreen, child: SplashPage()),
                 ][model.selectedPageIndex]),
             bottomNavigationBar: BottomNavigationBar(
               currentIndex: model.selectedPageIndex,
@@ -121,53 +137,15 @@ class HomePage extends ScopedModelDescendant<AppModel> {
                 BottomNavigationBarItem(
                     title: Text('Home'), icon: Icon(Icons.home)),
                 BottomNavigationBarItem(
-                    title: Text('Book'), icon: Icon(Icons.library_books)),
+                    title: Text('Book'), icon: Icon(Icons.view_carousel)),
                 BottomNavigationBarItem(
-                    title: Text('Help'), icon: Icon(Icons.help))
+                    title: Text('Larger'), icon: Icon(Icons.library_books)),
+                BottomNavigationBarItem(
+                    title: Text('Splash'), icon: Icon(Icons.restore_page)),
               ],
             ),
           );
 }
-
-// class HomePage extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return new Scaffold(
-//       backgroundColor: keenelandGreen,
-//       appBar: AppBar(
-//           // title: Text('Keenland'),
-//           title:
-//               Image.asset('graphics/logo-branded-wide.png', fit: BoxFit.cover)),
-//       body: new Container(
-//           decoration: new BoxDecoration(
-//             image: new DecorationImage(
-//               image: new AssetImage('graphics/background-small.png'),
-//               fit: BoxFit.cover,
-//             ),
-//           ),
-//           child: new Swiper(
-//             itemBuilder: (BuildContext context, int index) {
-//               return new Image.network(
-//                 "https://loremflickr.com/350/500/horse,racing/all?random=${index})",
-//                 fit: BoxFit.fill,
-//               );
-//             },
-//             itemCount: 10,
-//             itemWidth: 350.0,
-//             itemHeight: 500.0,
-//             layout: SwiperLayout.TINDER,
-//           )),
-//       bottomNavigationBar: BottomNavigationBar(
-//         items: <BottomNavigationBarItem>[
-//           BottomNavigationBarItem(title: Text('Home'), icon: Icon(Icons.home)),
-//           BottomNavigationBarItem(
-//               title: Text('Book'), icon: Icon(Icons.library_books))
-//         ],
-//         onTap: (index) => {},
-//       ),
-//     );
-//   }
-// }
 
 class BookPage extends StatelessWidget {
   @override
