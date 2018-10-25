@@ -75,12 +75,14 @@ class SplashPage extends StatelessWidget {
               color: Colors.white.withOpacity(.85),
               fontSize: 24.0)),
       Spacer(),
+      Spacer(),
       Text('powered by',
           style: TextStyle(color: Colors.white.withOpacity(.85))),
       Image.asset(
         'graphics/logo-equifecta.png',
         scale: 2.5,
       ),
+      Spacer(),
     ]));
   }
 }
