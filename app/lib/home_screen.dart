@@ -22,26 +22,27 @@ class HomeScreen extends ScopedModelDescendant<AppModel> {
         bottomNavigationBar: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            FlatButton.icon(
-              color: theme.backgroundColor,
+            Spacer(),
+            RaisedButton.icon(
               icon: Icon(Icons.view_carousel),
               label: Text('Browse'),
               onPressed: () {
                 Navigator.pushNamed(context, '/browse');
               },
             ),
-            FlatButton.icon(
-              color: theme.backgroundColor,
+            Spacer(),
+            RaisedButton.icon(
               icon: Icon(Icons.search),
               label: Text('Search'),
               onPressed: () {},
             ),
-            FlatButton.icon(
-              color: theme.backgroundColor,
+            Spacer(),
+            RaisedButton.icon(
               icon: Icon(Icons.star),
               label: Text('Favorites'),
               onPressed: () {},
             ),
+            Spacer(),
           ],
         ),
       );

@@ -53,6 +53,7 @@ flutter:
    - assets/logo-equifecta.png
    - assets/background.png
    - assets/background-small.png
+   - assets/background-small-darker.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
