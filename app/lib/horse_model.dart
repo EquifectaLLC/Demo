@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class HorseModel extends Model {
-  @required String name;
-  @required double cost;
+  @required double bid;
   @required int hip;
   Image photo;
   Image stats;
@@ -11,19 +10,11 @@ class HorseModel extends Model {
   bool favorite;
 
   HorseModel({
-    this.name,
     this.favorite,
-    this.cost,
+    this.bid,
     this.hip,
     this.photo,
     this.stats,
     this.catalog,
   });
-
-  setFavorite(bool value) {
-    print(favorite);
-    favorite = value;
-    notifyListeners();
-    print(favorite);
-  }
 }

@@ -20,6 +20,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
 
+  intl:
   scoped_model:
   custom_splash_screen:
   flutter_swiper:
@@ -54,6 +55,12 @@ flutter:
    - assets/background.png
    - assets/background-small.png
    - assets/background-small-darker.png
+   - assets/horses/horse-1.png
+   - assets/horses/horse-2.png
+   - assets/horses/horse-3.png
+   - assets/horses/catalog-1.jpg
+   - assets/horses/catalog-2.jpg
+   - assets/horses/catalog-3.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

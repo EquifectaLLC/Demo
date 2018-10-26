@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_page_indicator/flutter_page_indicator.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'app_model.dart';
 import 'theme.dart';
-import 'horse_model.dart';
 
 class BrowseScreen extends ScopedModelDescendant<AppModel> {
   @override
@@ -16,10 +14,17 @@ class BrowseScreen extends ScopedModelDescendant<AppModel> {
               title: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text('HIP: ${model.horse.hip}'),
                     Spacer(),
-                    // TODO: Cody, Format currency
-                    Text('${model.horse.cost}'),
+                    FlatButton(
+                        onPressed: () => model.horseIndex = model.horses.length-1,
+                        child: Text('HIP# ${model.currentHip}',
+                        style: TextStyle(fontSize: 20.0))),
+                    Spacer(),
+                    FlatButton(
+                        onPressed: () => model.horseIndex = model.horses.length-1,
+                        child: Text(model.currentBidFormatted,
+                        style: TextStyle(fontSize: 20.0))),
+                    Spacer(),
                   ]
               ),
             ),
@@ -34,16 +39,16 @@ class BrowseScreen extends ScopedModelDescendant<AppModel> {
                 itemBuilder: (BuildContext context, int index) {
                   switch (model.browseView) {
                     case BrowseView.catalogs:
-                      return model.horse.catalog;
+                      return model.horses[index].catalog;
                       break;
                     case BrowseView.images:
-                      return model.horse.photo;
+                      return model.horses[index].photo;
                       break;
                     case BrowseView.stats:
-                      return model.horse.stats;
+                      return model.horses[index].stats;
                       break;
                   }
-                  return model.horse.photo;
+                  return model.horses[index].photo;
                 },
                 itemCount: model.horses.length,
                 itemWidth: double.infinity,

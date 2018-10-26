@@ -8,7 +8,9 @@ import 'splash_screen.dart';
 import 'home_screen.dart';
 import 'browse_screen.dart';
 
-void main() => runApp(MobileApp());
+void main() {
+  runApp(MobileApp());
+}
 
 class MobileApp extends StatelessWidget {
   // This widget is the root of your application.
