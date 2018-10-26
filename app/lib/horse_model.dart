@@ -21,7 +21,9 @@ class HorseModel extends Model {
   });
 
   setFavorite(bool value) {
+    print(favorite);
     favorite = value;
     notifyListeners();
+    print(favorite);
   }
 }

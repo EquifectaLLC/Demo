@@ -17,6 +17,9 @@ class BrowseScreen extends ScopedModelDescendant<AppModel> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text('HIP: ${model.horse.hip}'),
+                    Spacer(),
+                    // TODO: Cody, Format currency
+                    Text('${model.horse.cost}'),
                   ]
               ),
             ),
@@ -54,7 +57,8 @@ class BrowseScreen extends ScopedModelDescendant<AppModel> {
             ),
             floatingActionButton: new FloatingActionButton(
               onPressed: () {
-                model.horse.favorite = !model.horse.favorite;
+                var other = !model.horse.favorite;
+                model.setFavorite(other);
               },
               tooltip: 'Favorite',
               backgroundColor: theme.buttonColor,

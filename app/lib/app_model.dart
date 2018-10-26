@@ -9,6 +9,30 @@ getImage(index) {
   );
 }
 
+getHorseImage(index) {
+  return Image.network(
+    'https://dummyimage.com/350x500/ff/115740.png&text=Photo+-+${index}',
+//    'https://loremflickr.com/350/500/horse/all?random=$index',
+    fit: BoxFit.fill,
+  );
+}
+
+getCatalogImage(index) {
+  return Image.network(
+    'https://dummyimage.com/350x500/ff/115740.png&text=Catalog+-+${index}',
+//    'https://loremflickr.com/350/500/catalog/all?random=$index',
+    fit: BoxFit.fill,
+  );
+}
+
+getStatsImage(index) {
+  return Image.network(
+    'https://dummyimage.com/350x500/ff/115740.png&text=Stats+-+${index}',
+//    'https://loremflickr.com/350/500/stats/all?random=$index',
+    fit: BoxFit.fill,
+  );
+}
+
 enum BrowseView {
   images,
   stats,
@@ -32,16 +56,28 @@ class AppModel extends Model {
     notifyListeners();
   }
 
-  HorseModel get horse => horses[horseIndex];
-  set horse(horse) {
-    horses[horseIndex] = horse;
-    horses[horseIndex].notifyListeners();
+  void setFavorite(bool value) {
+    horses[horseIndex].setFavorite(value);
     notifyListeners();
   }
 
-  List<HorseModel> get horses => <HorseModel>[
-    HorseModel(name: 'Izzy', cost: 900000.0, hip: 1, catalog: getImage(0), photo: getImage(1), stats: getImage(2), favorite: false),
-    HorseModel(name: 'Sam', cost: 600000.0, hip: 2, catalog: getImage(3), photo: getImage(4), stats: getImage(5), favorite: false),
-    HorseModel(name: 'Goob', cost: 300000.0, hip: 2, catalog: getImage(6), photo: getImage(7), stats: getImage(8), favorite: false),
+  HorseModel get horse => horses[horseIndex];
+  set horse(horse) {
+    horses[horseIndex] = horse;
+    notifyListeners();
+  }
+
+  // TODO: Cody, fill in this data from the pictures Thomas sent
+  // TODO: We will want the images to reside in the assets folder so it looks snappy
+  List<HorseModel> _horses = <HorseModel>[
+    HorseModel(name: 'Izzy', cost: 900000.0, hip: 1, catalog: getCatalogImage(1), photo: getHorseImage(1), stats: getStatsImage(1), favorite: false),
+    HorseModel(name: 'Sam', cost: 600000.0, hip: 2, catalog: getCatalogImage(2), photo: getHorseImage(2), stats: getStatsImage(2), favorite: false),
+    HorseModel(name: 'Goob', cost: 300000.0, hip: 2, catalog: getCatalogImage(3), photo: getHorseImage(3), stats: getStatsImage(3), favorite: false),
   ];
+
+  List<HorseModel> get horses => _horses;
+  set horses(value) {
+    _horses = value;
+    notifyListeners();
+  }
 }
