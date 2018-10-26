@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'horse_model.dart';
 import 'package:intl/intl.dart';
@@ -7,7 +8,7 @@ import 'dart:math';
 
 
 Image getHorseImage(index) {
-  return Image.asset('assets/horses/horse-$index.png');
+  return Image.asset('assets/horses/horse-$index.png', fit: BoxFit.fill,);
 //  var result = Image.network(
 //    'https://dummyimage.com/350x500/ff/115740.png&text=Photo+-+$index',
 ////    'https://loremflickr.com/350/500/horse/all?random=$index',
@@ -18,7 +19,7 @@ Image getHorseImage(index) {
 }
 
 Image getCatalogImage(index) {
-  return Image.asset('assets/horses/catalog-$index.jpg');
+  return Image.asset('assets/horses/catalog-$index.jpg', fit: BoxFit.fill,);
 //  var result = Image.network(
 //    'https://dummyimage.com/350x500/ff/115740.png&text=Catalog+-+$index',
 ////    'https://loremflickr.com/350/500/catalog/all?random=$index',
@@ -29,7 +30,7 @@ Image getCatalogImage(index) {
 }
 
 Image getStatsImage(index) {
-  return Image.asset('assets/horses/catalog-$index.jpg');
+  return Image.asset('assets/horses/catalog-$index.jpg', fit: BoxFit.fill,);
 //  var result = Image.network(
 //    'https://dummyimage.com/350x500/ff/115740.png&text=Stats+-+$index',
 ////    'https://loremflickr.com/350/500/stats/all?random=$index',
@@ -61,7 +62,12 @@ class AppModel extends Model {
 
   var _horseIndex = 0;
   get horseIndex => _horseIndex;
-  set horseIndex(index) { _horseIndex = index; notifyListeners(); }
+  set horseIndex(index) {
+    if (index != _horseIndex) {
+      _horseIndex = index;
+      notifyListeners();
+    }
+  }
 
   var _browseView = BrowseView.images;
   get browseView => _browseView;

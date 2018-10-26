@@ -16,12 +16,14 @@ class BrowseScreen extends ScopedModelDescendant<AppModel> {
                   children: <Widget>[
                     Spacer(),
                     FlatButton(
-                        onPressed: () => model.horseIndex = model.horses.length-1,
+//                        onPressed: () => model.horseIndex = model.horses.length-1,
+                        onPressed: () => {},
                         child: Text('HIP# ${model.currentHip}',
                         style: TextStyle(fontSize: 20.0))),
                     Spacer(),
                     FlatButton(
-                        onPressed: () => model.horseIndex = model.horses.length-1,
+//                        onPressed: () => model.horseIndex = model.horses.length-1,
+                        onPressed: () => {},
                         child: Text(model.currentBidFormatted,
                         style: TextStyle(fontSize: 20.0))),
                     Spacer(),
@@ -29,9 +31,9 @@ class BrowseScreen extends ScopedModelDescendant<AppModel> {
               ),
             ),
             body: Container(
-              decoration: new BoxDecoration(
-                image: new DecorationImage(
-                  image: new AssetImage('assets/background-small-darker.png'),
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/background-small-darker.png'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -58,6 +60,7 @@ class BrowseScreen extends ScopedModelDescendant<AppModel> {
                 onIndexChanged: (index) {
                   model.horseIndex = index;
                 },
+                index: model.horseIndex,
               ),
             ),
             floatingActionButton: new FloatingActionButton(
