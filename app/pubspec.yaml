@@ -24,6 +24,7 @@ dependencies:
   scoped_model:
   custom_splash_screen:
   flutter_swiper:
+  photo_view:
 
 dev_dependencies:
   flutter_test:

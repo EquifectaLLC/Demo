@@ -4,9 +4,9 @@ import 'package:scoped_model/scoped_model.dart';
 class HorseModel extends Model {
   @required double bid;
   @required int hip;
-  Image photo;
-  Image stats;
-  Image catalog;
+  AssetImage photo;
+  AssetImage stats;
+  AssetImage catalog;
   bool favorite;
 
   HorseModel({

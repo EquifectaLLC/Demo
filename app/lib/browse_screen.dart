@@ -3,6 +3,7 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'app_model.dart';
 import 'theme.dart';
+import 'package:photo_view/photo_view.dart';
 
 class BrowseScreen extends ScopedModelDescendant<AppModel> {
   @override
@@ -38,19 +39,11 @@ class BrowseScreen extends ScopedModelDescendant<AppModel> {
                 ),
               ),
               child: Swiper(
+                onTap: (index) {
+                    Navigator.pushNamed(context, '/zoom');
+                  },
                 itemBuilder: (BuildContext context, int index) {
-                  switch (model.browseView) {
-                    case BrowseView.catalogs:
-                      return model.horses[index].catalog;
-                      break;
-                    case BrowseView.images:
-                      return model.horses[index].photo;
-                      break;
-                    case BrowseView.stats:
-                      return model.horses[index].stats;
-                      break;
-                  }
-                  return model.horses[index].photo;
+                  return model.getImage(index);
                 },
                 itemCount: model.horses.length,
                 itemWidth: double.infinity,

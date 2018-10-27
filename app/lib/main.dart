@@ -7,6 +7,7 @@ import 'error_screen.dart';
 import 'splash_screen.dart';
 import 'home_screen.dart';
 import 'browse_screen.dart';
+import 'zoom_screen.dart';
 
 void main() {
   runApp(MobileApp());
@@ -34,6 +35,7 @@ class MobileApp extends StatelessWidget {
             navigateAfterSeconds: HomeScreen(),
           ),
             '/browse': (context) => BrowseScreen(),
+            '/zoom': (context) => ZoomScreen(),
           },
         ));
   }
