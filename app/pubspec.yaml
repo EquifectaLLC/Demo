@@ -26,6 +26,7 @@ dependencies:
   flutter_swiper:
   photo_view:
   uuid:
+  fluro:
 
 dev_dependencies:
   flutter_test:
@@ -57,15 +58,23 @@ flutter:
    - assets/background.png
    - assets/background-small.png
    - assets/background-small-darker.png
-   - assets/horses/horse-1.png
-   - assets/horses/horse-2.png
-   - assets/horses/horse-3.png
-   - assets/horses/catalog-1.jpg
-   - assets/horses/catalog-2.jpg
-   - assets/horses/catalog-3.jpg
+   - assets/background-small-blur.png
+   - assets/background-small-darker-blur.png
+   - assets/horses/photo-1.jpg
+   - assets/horses/photo-2.jpg
+   - assets/horses/photo-3.jpg
+   - assets/horses/photo-4.jpg
+   - assets/horses/photo-5.jpg
+   - assets/horses/catalog-1.png
+   - assets/horses/catalog-2.png
+   - assets/horses/catalog-3.png
+   - assets/horses/catalog-4.png
+   - assets/horses/catalog-5.png
    - assets/horses/xray-1.jpg
    - assets/horses/xray-2.jpg
    - assets/horses/xray-3.jpg
+   - assets/horses/xray-4.jpg
+   - assets/horses/xray-5.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

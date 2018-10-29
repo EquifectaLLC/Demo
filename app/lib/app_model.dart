@@ -4,6 +4,16 @@ import 'horse_model.dart';
 import 'package:intl/intl.dart';
 import 'dart:async';
 import 'dart:math';
+import 'package:fluro/fluro.dart';
+import 'favorites_screen.dart';
+import 'search_screen.dart';
+import 'browse_screen.dart';
+import 'zoom_screen.dart';
+import 'package:custom_splash_screen/custom_splash_screen.dart';
+import 'splash_screen.dart';
+import 'error_screen.dart';
+import 'home_screen.dart';
+import 'theme.dart';
 
 enum BrowseView { images, stats, catalogs }
 
@@ -53,7 +63,8 @@ class AppModel extends Model {
   get averageBidSeconds => _bidTime / _bidsMade;
 
   AppModel() {
-    _startTimer();
+    // _startTimer();
+    defineRoutes(router);
   }
 
   random(int max) => Random().nextInt(max);
@@ -111,43 +122,61 @@ class AppModel extends Model {
 
   List<HorseModel> _horses = <HorseModel>[
     HorseModel(
-        hip: 1,
+        hip: 26,
         catalog: getCatalogImage(1),
         photo: getHorseImage(1),
-        stats: getStatsImage(1),
+        // stats: getStatsImage(1),
         xray: getXrayImage(1),
-        sireName: 'More Than Ready (1997)',
-        mareName: 'Moondance (2014)',
+        sireName: 'Tale of the Cat (1994)',
+        mareName: 'Dean Henry (2005)',
         favorite: false),
     HorseModel(
-        hip: 2,
+        hip: 19,
         catalog: getCatalogImage(2),
         photo: getHorseImage(2),
-        stats: getStatsImage(2),
+        // stats: getStatsImage(2),
         xray: getXrayImage(2),
-        sireName: 'Quality Road (2006)',
-        mareName: 'Treasure Trail (2006)',
+        sireName: 'Smart Strike (1992)',
+        mareName: 'Storm Flag Flying (2000)',
         favorite: false),
     HorseModel(
-        hip: 3,
+        hip: 18,
         catalog: getCatalogImage(3),
         photo: getHorseImage(3),
-        stats: getStatsImage(3),
+        // stats: getStatsImage(3),
         xray: getXrayImage(3),
-        sireName: 'Uncle Mo (2008)',
-        mareName: 'Surfside Tiara (2013)',
+        sireName: 'Giant\'s Causeway (1997)',
+        mareName: 'Russian Ballet (1988)',
+        favorite: false),
+    HorseModel(
+        hip: 14,
+        catalog: getCatalogImage(4),
+        photo: getHorseImage(4),
+        // stats: getStatsImage(3),
+        xray: getXrayImage(4),
+        sireName: 'Medaglia D\'Oro (1999)',
+        mareName: 'Auntie Joy (2013)',
+        favorite: false),
+    HorseModel(
+        hip: 11,
+        catalog: getCatalogImage(5),
+        photo: getHorseImage(5),
+        // stats: getStatsImage(5),
+        xray: getXrayImage(5),
+        sireName: 'Bernardini (2003)',
+        mareName: 'Uchitel (2007)',
         favorite: false),
   ];
 
   List<HorseModel> get horses => _horses;
-  
-  List<HorseModel> get favorites => _horses.where((x) => x.favorite == true).toList();
+
+  List<HorseModel> get favorites =>
+      _horses.where((x) => x.favorite == true).toList();
 
   set horses(value) {
     _horses = value;
     notifyListeners();
   }
-
 
   Image getCurrentImage() {
     return getImage(_horseIndex);
@@ -173,10 +202,37 @@ class AppModel extends Model {
     return Image(image: horses[index].photo);
   }
 
+  static AssetImage getHorseImage(index) =>
+      AssetImage('assets/horses/photo-$index.jpg');
+  static AssetImage getCatalogImage(index) =>
+      AssetImage('assets/horses/catalog-$index.png');
+  // static AssetImage getStatsImage(index) =>
+  //     AssetImage('assets/horses/stats-$index.jpg');
+  static AssetImage getXrayImage(index) =>
+      AssetImage('assets/horses/xray-$index.jpg');
 
-  static AssetImage getHorseImage(index) => AssetImage('assets/horses/horse-$index.png');
-  static AssetImage getCatalogImage(index) => AssetImage('assets/horses/catalog-$index.jpg');
-  static AssetImage getStatsImage(index) => AssetImage('assets/horses/stats-$index.jpg');
-  static AssetImage getXrayImage(index) => AssetImage('assets/horses/xray-$index.jpg');
+  final router = Router();
+  void defineRoutes(Router router) {
+    router.define("/browse",
+        handler: Handler(handlerFunc: (context, params) => BrowseScreen()));
+    router.define("/favorites",
+        handler: Handler(handlerFunc: (context, params) => FavoritesScreen()));
+    router.define("/search",
+        handler: Handler(handlerFunc: (context, params) => SearchScreen()));
+    router.define("/zoom",
+        handler: Handler(handlerFunc: (context, params) => ZoomScreen()));
+    router.define("/",
+        handler: Handler(
+            handlerFunc: (context, params) => CustomSplashScreen(
+                  backgroundColor: theme.backgroundColor,
+                  loadingSplash: SplashScreen(),
+                  errorSplash: ErrorScreen(),
+                  seconds: 3,
+                  navigateAfterSeconds: HomeScreen(),
+                )));
+  }
 
+  void navigateTo(BuildContext context, String path) {
+    router.navigateTo(context, path, transition: TransitionType.fadeIn);
+  }
 }

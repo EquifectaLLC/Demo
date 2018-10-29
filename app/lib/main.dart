@@ -26,21 +26,22 @@ class MobileApp extends StatelessWidget {
           title: 'Keeneland',
           theme: theme,
           debugShowCheckedModeBanner: false,
+          onGenerateRoute: model.router.generator,
           initialRoute: '/',
-          routes: {
-            // When we navigate to the "/" route, build the FirstScreen Widget
-            '/': (context) => CustomSplashScreen(
-                  backgroundColor: theme.backgroundColor,
-                  loadingSplash: SplashScreen(),
-                  errorSplash: ErrorScreen(),
-                  seconds: 3,
-                  navigateAfterSeconds: HomeScreen(),
-                ),
-            '/browse': (context) => BrowseScreen(),
-            '/zoom': (context) => ZoomScreen(),
-            '/favorites': (context) => FavoritesScreen(),
-            '/search': (context) => SearchScreen(),
-          },
+          // routes: {
+          //   // When we navigate to the "/" route, build the FirstScreen Widget
+          //   '/': (context) => CustomSplashScreen(
+          //         backgroundColor: theme.backgroundColor,
+          //         loadingSplash: SplashScreen(),
+          //         errorSplash: ErrorScreen(),
+          //         seconds: 3,
+          //         navigateAfterSeconds: HomeScreen(),
+          //       ),
+          //   '/browse': (context) => BrowseScreen(),
+          //   '/zoom': (context) => ZoomScreen(),
+          //   '/favorites': (context) => FavoritesScreen(),
+          //   '/search': (context) => SearchScreen(),
+          // },
         ));
   }
 }

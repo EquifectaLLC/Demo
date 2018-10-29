@@ -15,7 +15,7 @@ class SearchScreen extends ScopedModelDescendant<AppModel> {
               decoration: new BoxDecoration(
                 image: DecorationImage(
 //              image: AssetImage('assets/background-small-darker.png'),
-                  image: AssetImage('assets/background-small.png'),
+                  image: AssetImage('assets/background-small-blur.png'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -57,7 +57,7 @@ class SearchScreen extends ScopedModelDescendant<AppModel> {
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: <Widget>[
-                                model.getImage(index),
+                                model.getListImage(index),
 //                        Expanded(
 //                            child:
                                 Container(
@@ -68,7 +68,7 @@ class SearchScreen extends ScopedModelDescendant<AppModel> {
                                           child: Text(
                                               '#${model.horses[index].hip}',
                                               style: TextStyle(
-                                                  fontSize: 36.0,
+                                                  fontSize: 32.0,
                                                   fontWeight: FontWeight.w100,
                                                   fontFamily: 'Times New Roman',
                                                   color: Colors.white)))),
@@ -90,15 +90,15 @@ class SearchScreen extends ScopedModelDescendant<AppModel> {
                                         children: <Widget>[
                                           Text(model.horses[index].sireName,
                                               style: TextStyle(
-                                                  fontSize: 24.0,
-                                                  fontWeight: FontWeight.w100,
-                                                  fontFamily: 'Times New Roman',
+                                                  fontSize: 16.0,
+                                                  // fontWeight: FontWeight.w100,
+                                                  // fontFamily: 'Times New Roman',
                                                   color: Colors.white)),
                                           Text(model.horses[index].mareName,
                                               style: TextStyle(
-                                                  fontSize: 24.0,
-                                                  fontWeight: FontWeight.w100,
-                                                  fontFamily: 'Times New Roman',
+                                                  fontSize: 16.0,
+                                                  // fontWeight: FontWeight.w100,
+                                                  // fontFamily: 'Times New Roman',
                                                   color: Colors.white)),
                                         ],
                                       )),

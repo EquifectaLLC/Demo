@@ -27,7 +27,9 @@ class HomeScreen extends ScopedModelDescendant<AppModel> {
                   icon: Icon(Icons.view_carousel),
                   label: Text('Browse'),
                   onPressed: () {
-                    Navigator.pushNamed(context, '/browse');
+                    model.navigateTo(context, '/browse');
+                    // model.router.navigateTo(context, '/browse');
+                    // Navigator.pushNamed(context, '/browse');
                   },
                 ),
                 Spacer(),
@@ -36,7 +38,9 @@ class HomeScreen extends ScopedModelDescendant<AppModel> {
                   label: Text('Search'),
                   onPressed: () {
                     model.setAllFavorites();
-                    Navigator.pushNamed(context, '/search');
+                    model.navigateTo(context, '/search');
+                    // model.router.navigateTo(context, '/search');
+                    // Navigator.pushNamed(context, '/search');
                   },
                 ),
                 Spacer(),
@@ -45,7 +49,9 @@ class HomeScreen extends ScopedModelDescendant<AppModel> {
                   label: Text('Favorites'),
                   onPressed: () {
                     model.setAllFavorites();
-                    Navigator.pushNamed(context, '/favorites');
+                    model.navigateTo(context, '/favorites');
+                    // model.router.navigateTo(context, '/favorites');
+                    // Navigator.pushNamed(context, '/favorites');
                   },
                 ),
                 Spacer(),

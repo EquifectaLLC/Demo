@@ -7,9 +7,8 @@ import 'package:photo_view/photo_view.dart';
 class ZoomScreen extends ScopedModelDescendant<AppModel> {
   @override
   ScopedModelDescendantBuilder<AppModel> get builder =>
-          (context, child, model) =>
-          Scaffold(
-            backgroundColor: theme.backgroundColor,
+      (context, child, model) => Scaffold(
+            backgroundColor: theme.buttonColor,
             appBar: AppBar(
               title: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -24,26 +23,24 @@ class ZoomScreen extends ScopedModelDescendant<AppModel> {
                     FlatButton(
 //                        onPressed: () => model.horseIndex = model.horses.length-1,
                         onPressed: () => {},
-                        child: Text(model.currentBidFormatted,
-                            style: TextStyle(fontSize: 20.0))),
+                        child: Text(model.horse.sireName,
+                            style: TextStyle(fontSize: 12.0))),
                     Spacer(),
-                  ]
-              ),
+                  ]),
             ),
-//            body: Container(
-//              decoration: BoxDecoration(
-//                image: DecorationImage(
-//                  image: AssetImage('assets/background-small-darker.png'),
-//                  fit: BoxFit.cover,
-//                ),
-//              ),
-//              child:
-          body:
-                  PhotoView(
-                    imageProvider: model.getCurrentImage().image,
-                    backgroundColor: theme.buttonColor,
-                  ),
-//            ),
+            // body: Container(
+            //   decoration: BoxDecoration(
+            //     image: DecorationImage(
+            //       image: AssetImage('assets/background-small-darker-blur.png'),
+            //       fit: BoxFit.cover,
+            //     ),
+            //   ),
+            //   child: PhotoView(
+            body: PhotoView(
+              imageProvider: model.getCurrentImage().image,
+              backgroundColor: theme.buttonColor,
+            ),
+            // ),
 //            floatingActionButton: new FloatingActionButton(
 //
 //              onPressed: () {

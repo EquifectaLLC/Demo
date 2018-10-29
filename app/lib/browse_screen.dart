@@ -13,31 +13,32 @@ class BrowseScreen extends ScopedModelDescendant<AppModel> {
               title: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Spacer(),
                     FlatButton(
 //                        onPressed: () => model.horseIndex = model.horses.length-1,
                         onPressed: () => {},
-                        child: Text('HIP# ${model.currentHip}',
+                        child: Text('HIP# ${model.horse.hip}',
                             style: TextStyle(fontSize: 20.0))),
-                    Spacer(),
                     FlatButton(
 //                        onPressed: () => model.horseIndex = model.horses.length-1,
                         onPressed: () => {},
-                        child: Text(model.currentBidFormatted,
-                            style: TextStyle(fontSize: 20.0))),
+                        child: Text(model.horse.sireName,
+                            style: TextStyle(fontSize: 12.0))),
                     Spacer(),
                   ]),
             ),
             body: Container(
+              // color: theme.buttonColor,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/background-small-darker.png'),
+                  image: AssetImage('assets/background-small-darker-blur.png'),
                   fit: BoxFit.cover,
                 ),
               ),
               child: Swiper(
                 onTap: (index) {
-                  Navigator.pushNamed(context, '/zoom');
+                  model.navigateTo(context, '/zoom');
+                  // model.router.navigateTo(context, '/zoom');
+                  // Navigator.pushNamed(context, '/zoom');
                 },
                 itemBuilder: (BuildContext context, int index) {
                   return model.getImage(index);

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'app_model.dart';
 import 'theme.dart';
-import 'package:uuid/uuid.dart';
 
 class FavoritesScreen extends ScopedModelDescendant<AppModel> {
   @override
@@ -10,15 +9,14 @@ class FavoritesScreen extends ScopedModelDescendant<AppModel> {
           model) =>
       Scaffold(
         backgroundColor: theme.backgroundColor,
-        appBar: AppBar(
-            title: Text('Favorites')),
+        appBar: AppBar(title: Text('Favorites')),
 //                Image.asset('assets/logo-branded-wide.png', fit: BoxFit.cover)),
         body: Container(
           constraints: BoxConstraints.expand(),
           decoration: new BoxDecoration(
             image: DecorationImage(
 //              image: AssetImage('assets/background-small-darker.png'),
-              image: AssetImage('assets/background-small.png'),
+              image: AssetImage('assets/background-small-blur.png'),
               fit: BoxFit.cover,
             ),
           ),
@@ -36,9 +34,10 @@ class FavoritesScreen extends ScopedModelDescendant<AppModel> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
-                Expanded(child: Container(
-                color: theme.buttonColor.withAlpha(200),
-                )),
+                      Expanded(
+                          child: Container(
+                        color: theme.buttonColor.withAlpha(200),
+                      )),
                       Container(
                           padding: EdgeInsets.all(10.0),
                           color: theme.buttonColor.withAlpha(200),
@@ -68,12 +67,13 @@ class FavoritesScreen extends ScopedModelDescendant<AppModel> {
 //                            child:
                         Container(
                           color: Colors.black.withAlpha(220),
+                          // color: theme.buttonColor.withAlpha(220),
                           child: Padding(
                               padding: EdgeInsets.all(10.0),
                               child: Center(
                                   child: Text('#${model.favorites[index].hip}',
                                       style: TextStyle(
-                                          fontSize: 36.0,
+                                          fontSize: 32.0,
                                           fontWeight: FontWeight.w100,
                                           fontFamily: 'Times New Roman',
                                           color: Colors.white)))),
@@ -93,15 +93,15 @@ class FavoritesScreen extends ScopedModelDescendant<AppModel> {
                                 children: <Widget>[
                                   Text(model.favorites[index].sireName,
                                       style: TextStyle(
-                                          fontSize: 24.0,
-                                          fontWeight: FontWeight.w100,
-                                          fontFamily: 'Times New Roman',
+                                          fontSize: 16.0,
+                                          // fontWeight: FontWeight.w100,
+                                          // fontFamily: 'Times New Roman',
                                           color: Colors.white)),
                                   Text(model.favorites[index].mareName,
                                       style: TextStyle(
-                                          fontSize: 24.0,
-                                          fontWeight: FontWeight.w100,
-                                          fontFamily: 'Times New Roman',
+                                          fontSize: 16.0,
+                                          // fontWeight: FontWeight.w100,
+                                          // fontFamily: 'Times New Roman',
                                           color: Colors.white)),
                                 ],
                               )),
