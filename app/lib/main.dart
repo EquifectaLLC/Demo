@@ -8,6 +8,8 @@ import 'splash_screen.dart';
 import 'home_screen.dart';
 import 'browse_screen.dart';
 import 'zoom_screen.dart';
+import 'favorites_screen.dart';
+import 'search_screen.dart';
 
 void main() {
   runApp(MobileApp());
@@ -28,14 +30,16 @@ class MobileApp extends StatelessWidget {
           routes: {
             // When we navigate to the "/" route, build the FirstScreen Widget
             '/': (context) => CustomSplashScreen(
-            backgroundColor: theme.backgroundColor,
-            loadingSplash: SplashScreen(),
-            errorSplash: ErrorScreen(),
-            seconds: 3,
-            navigateAfterSeconds: HomeScreen(),
-          ),
+                  backgroundColor: theme.backgroundColor,
+                  loadingSplash: SplashScreen(),
+                  errorSplash: ErrorScreen(),
+                  seconds: 3,
+                  navigateAfterSeconds: HomeScreen(),
+                ),
             '/browse': (context) => BrowseScreen(),
             '/zoom': (context) => ZoomScreen(),
+            '/favorites': (context) => FavoritesScreen(),
+            '/search': (context) => SearchScreen(),
           },
         ));
   }

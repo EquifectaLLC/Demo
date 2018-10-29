@@ -92,6 +92,16 @@ class AppModel extends Model {
     notifyListeners();
   }
 
+  void setAllFavorites() {
+    horses.forEach((x) => x.favorite = true);
+    notifyListeners();
+  }
+
+  void removeFavorite(int index) {
+    favorites[index].favorite = false;
+    notifyListeners();
+  }
+
   HorseModel get horse => horses[horseIndex];
 
   set horse(horse) {
@@ -99,30 +109,39 @@ class AppModel extends Model {
     notifyListeners();
   }
 
-  // TODO: Cody, fill in this data from the pictures Thomas sent
-  // TODO: We will want the images to reside in the assets folder so it looks snappy
   List<HorseModel> _horses = <HorseModel>[
     HorseModel(
         hip: 1,
         catalog: getCatalogImage(1),
         photo: getHorseImage(1),
         stats: getStatsImage(1),
+        xray: getXrayImage(1),
+        sireName: 'More Than Ready (1997)',
+        mareName: 'Moondance (2014)',
         favorite: false),
     HorseModel(
         hip: 2,
         catalog: getCatalogImage(2),
         photo: getHorseImage(2),
         stats: getStatsImage(2),
+        xray: getXrayImage(2),
+        sireName: 'Quality Road (2006)',
+        mareName: 'Treasure Trail (2006)',
         favorite: false),
     HorseModel(
         hip: 3,
         catalog: getCatalogImage(3),
         photo: getHorseImage(3),
         stats: getStatsImage(3),
+        xray: getXrayImage(3),
+        sireName: 'Uncle Mo (2008)',
+        mareName: 'Surfside Tiara (2013)',
         favorite: false),
   ];
 
   List<HorseModel> get horses => _horses;
+  
+  List<HorseModel> get favorites => _horses.where((x) => x.favorite == true).toList();
 
   set horses(value) {
     _horses = value;
@@ -134,6 +153,10 @@ class AppModel extends Model {
     return getImage(_horseIndex);
   }
 
+  Image getListImage(index) {
+    return Image(image: horses[index].photo);
+  }
+
   Image getImage(index) {
     switch (browseView) {
       case BrowseView.catalogs:
@@ -143,7 +166,8 @@ class AppModel extends Model {
         return Image(image: horses[index].photo);
         break;
       case BrowseView.stats:
-        return Image(image: horses[index].stats);
+//        return Image(image: horses[index].stats);
+        return Image(image: horses[index].xray);
         break;
     }
     return Image(image: horses[index].photo);
@@ -153,5 +177,6 @@ class AppModel extends Model {
   static AssetImage getHorseImage(index) => AssetImage('assets/horses/horse-$index.png');
   static AssetImage getCatalogImage(index) => AssetImage('assets/horses/catalog-$index.jpg');
   static AssetImage getStatsImage(index) => AssetImage('assets/horses/stats-$index.jpg');
+  static AssetImage getXrayImage(index) => AssetImage('assets/horses/xray-$index.jpg');
 
 }

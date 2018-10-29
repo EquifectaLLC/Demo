@@ -25,6 +25,7 @@ dependencies:
   custom_splash_screen:
   flutter_swiper:
   photo_view:
+  uuid:
 
 dev_dependencies:
   flutter_test:
@@ -62,6 +63,9 @@ flutter:
    - assets/horses/catalog-1.jpg
    - assets/horses/catalog-2.jpg
    - assets/horses/catalog-3.jpg
+   - assets/horses/xray-1.jpg
+   - assets/horses/xray-2.jpg
+   - assets/horses/xray-3.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
