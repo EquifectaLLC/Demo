@@ -235,4 +235,8 @@ class AppModel extends Model {
   void navigateTo(BuildContext context, String path) {
     router.navigateTo(context, path, transition: TransitionType.fadeIn);
   }
+
+  void pop(BuildContext context) {
+    router.pop(context);
+  }
 }

@@ -8,7 +8,7 @@ class ZoomScreen extends ScopedModelDescendant<AppModel> {
   @override
   ScopedModelDescendantBuilder<AppModel> get builder =>
       (context, child, model) => Scaffold(
-            backgroundColor: theme.buttonColor,
+            backgroundColor: theme.backgroundColor,
             appBar: AppBar(
               title: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -28,19 +28,22 @@ class ZoomScreen extends ScopedModelDescendant<AppModel> {
                     Spacer(),
                   ]),
             ),
-            // body: Container(
-            //   decoration: BoxDecoration(
-            //     image: DecorationImage(
-            //       image: AssetImage('assets/background-small-darker-blur.png'),
-            //       fit: BoxFit.cover,
-            //     ),
-            //   ),
-            //   child: PhotoView(
-            body: PhotoView(
-              imageProvider: model.getCurrentImage().image,
-              backgroundColor: theme.buttonColor,
+            body: Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/background-small-darker-blur.png'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: Padding(
+                  // body: Padding(
+                  padding: EdgeInsets.all(5.0),
+                  child: PhotoView(
+                    imageProvider: model.getCurrentImage().image,
+                    // backgroundColor: theme.buttonColor,
+                    backgroundColor: Colors.black.withAlpha(0),
+                  )),
             ),
-            // ),
 //            floatingActionButton: new FloatingActionButton(
 //
 //              onPressed: () {
@@ -53,34 +56,21 @@ class ZoomScreen extends ScopedModelDescendant<AppModel> {
 //              child: model.horse.favorite ? Icon(Icons.star) : Icon(Icons.star_border),
 ////              child: Icon(Icons.star_border),
 //            ),
-//            bottomNavigationBar: Row(
-//              mainAxisAlignment: MainAxisAlignment.center,
-//              children: <Widget>[
-//                Spacer(),
-//                RaisedButton.icon(
-//                  icon: Icon(Icons.assessment),
-//                  label: Text('Stats'),
-//                  onPressed: () => model.browseView = BrowseView.stats,
-//                ),
-//                Spacer(),
-//                RaisedButton.icon(
-//                  icon: Icon(Icons.photo),
-//                  label: Text('Photo'),
-//                  onPressed: () => model.browseView = BrowseView.images,
-//                ),
-//                Spacer(),
-//                RaisedButton.icon(
-//                  icon: Icon(Icons.library_books),
-//                  label: Text('Catalog'),
-//                  onPressed: () => model.browseView = BrowseView.catalogs,
-//                ),
-//                Spacer(),
-//                IconButton(
-//                  icon: Icon(Icons.fullscreen),
-//                  onPressed: () => model.toggleFullScreen(),
-//                ),
-//                Spacer(),
-//              ],
-//            ),
+            bottomNavigationBar: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                // Spacer(),
+                Expanded(
+                    child: Padding(
+                        padding: EdgeInsets.only(left: 6.0, right: 6.0),
+                        child: RaisedButton.icon(
+                          color: theme.buttonColor,
+                          icon: Icon(Icons.arrow_back),
+                          label: Text('Exit Zoom'),
+                          onPressed: () => model.pop(context),
+                        ))),
+                // Spacer(),
+              ],
+            ),
           );
 }
