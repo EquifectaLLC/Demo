@@ -27,6 +27,7 @@ dependencies:
   photo_view:
   uuid:
   fluro:
+  video_player:
 
 dev_dependencies:
   flutter_test:
