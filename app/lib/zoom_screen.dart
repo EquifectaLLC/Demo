@@ -40,8 +40,7 @@ class ZoomScreen extends ScopedModelDescendant<AppModel> {
                   padding: EdgeInsets.all(5.0),
                   child: PhotoView(
                     imageProvider: model.getCurrentImage().image,
-                    // backgroundColor: theme.buttonColor,
-                    backgroundColor: Colors.black.withAlpha(0),
+                    // backgroundDecoration: widget.backgroundDecoration,
                   )),
             ),
 //            floatingActionButton: new FloatingActionButton(

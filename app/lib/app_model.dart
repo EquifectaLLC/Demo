@@ -223,13 +223,15 @@ class AppModel extends Model {
         handler: Handler(handlerFunc: (context, params) => ZoomScreen()));
     router.define("/",
         handler: Handler(
-            handlerFunc: (context, params) => CustomSplashScreen(
-                  backgroundColor: theme.backgroundColor,
-                  loadingSplash: SplashScreen(),
-                  errorSplash: ErrorScreen(),
-                  seconds: 3,
-                  navigateAfterSeconds: HomeScreen(),
-                )));
+            handlerFunc: (context, params) => HomeScreen()));
+        // handler: Handler(
+        //     handlerFunc: (context, params) => CustomSplashScreen(
+        //           backgroundColor: theme.backgroundColor,
+        //           loadingSplash: SplashScreen(),
+        //           errorSplash: ErrorScreen(),
+        //           seconds: 3,
+        //           navigateAfterSeconds: HomeScreen(),
+        //         )));
   }
 
   void navigateTo(BuildContext context, String path) {
